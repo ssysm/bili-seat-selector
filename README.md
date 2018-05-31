@@ -46,7 +46,7 @@
     }
 ```
 
-至于选择部分 使用`document.click();`即可
+至于选择部分，先判断每个座位是否有`unavailable`的class在里面，如果没有,则是一个可选座位,使用`document.click();`即可
 
 在付款的时候需要延时几毫米来让vue把按钮渲染至dom里面,一个`setTimeout()`即可
 
@@ -57,3 +57,17 @@
 本repo使用GPLv3.0授权
 
 贡献和Issue看情况 没打算维护这个 最后一年去了
+
+## 我是网站开发者 我很火大 如何防止你这个脚本！！！
+
+如果你真的是这个网站的开发者 ~~你也是够闲的~~
+
+![火大](https://storage.theeditorstudio.com/-7c508a8469add46d.gif)
+
+
+以下是几个解决方案
+
+ * 禁用开发者工具（死loop触发deugger) 
+ * 给dom赋予随机class或者识别id
+ * Prototype移除.click()
+ * ~~别想了 德高一尺魔高一仗 永远会有脚本的~~
