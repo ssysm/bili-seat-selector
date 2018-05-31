@@ -48,7 +48,7 @@
 
 至于选择部分，先判断每个座位是否有`unavailable`的class在里面，如果没有,则是一个可选座位,使用`document.click();`即可
 
-在付款的时候需要延时几毫米来让vue把按钮渲染至dom里面,一个`setTimeout()`即可
+在付款的时候需要延时几毫秒来让vue把按钮渲染至dom里面,一个`setTimeout()`即可
 
 ## 贡献、Issue和其他信息
 
