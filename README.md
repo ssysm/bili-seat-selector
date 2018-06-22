@@ -1,14 +1,28 @@
 # bili-seat-selector
 
-某站的抢票选座脚本
+ ## 某站的抢票选座脚本
 
-## 使用方法
+# 使用方法
 
-用某些方式将`select.js`插入选座抢票页面
+~~用某些方式将`select.js`插入选座抢票页面~~
 
-然后打开控制台并输入`select();`来运行
+~~然后打开控制台并输入`select();`来运行~~
 
-## 基本原理
+目前项目正在进行重构...使用方法请使用源码POC实现
+
+# 基本原理
+
+## 票区选择部分
+
+票区选择图是一个大SVG图像,内容使用`polygon`控制
+
+每个`polygon`附带一个id，这个样从后台传来数据的时候就可以标出哪里可以购买
+
+在判断某个区可以购买的时候，可以获取`polygon`的填充属性,可以购买的一般样式为`fill: transparent;`,不可购买的为`fill: rgba(202, 202, 202, 0.9);`。一个比较简单的判断逻辑即可。
+
+选择区域直接`.dispatchEvent()`即可，这里不能用`.click()`
+
+## 座位图选择部分
 
 将座位图当作一个2D Matrix Array
 
@@ -46,19 +60,26 @@
     }
 ```
 
-至于选择部分，先判断每个座位是否有`unavailable`的class在里面，如果没有,则是一个可选座位,使用`document.click();`即可
+至于选择部分，先判断每个座位是否有`unavailable`的class在里面，如果没有,则是一个可选座位,使用`.click();`或`.dispatchEvent(new Event)`即可
 
 在付款的时候需要延时几毫秒来让vue把按钮渲染至dom里面,一个`setTimeout()`即可
 
-## 贡献、Issue和其他信息
+## 结账锁单部分
 
-对于本脚本的特殊性，THIS SCRIPT IS FOR EDUCATION PURPOSE ONLY,作者本人对此脚本产生的后果不负责。
+...还没研究出来,,,
+
+# 贡献、Issue和其他信息
+
+
+**！！！对于本脚本的特殊性，此脚本仅供教育目的使用,作者本人对此脚本产生的后果不负责。！！！**
+
+**!!! For the specificity of this script, this script is for educational purposes only. I(The Author) are not responsible for the consequences of this script. !!!**
 
 本repo使用GPLv3.0授权
 
 贡献和Issue看情况 没打算维护这个 最后一年去了
 
-## 我是网站开发者 我很火大 如何防止你这个脚本！！！
+# 我是网站开发者 我很火大 如何防止你这个脚本！！！
 
 如果你真的是这个网站的开发者 ~~你找到这也是够闲的~~
 
@@ -70,5 +91,5 @@
  * 最简单的 - 加验证码
  * 禁用开发者工具（死loop触发deugger) 
  * 给dom赋予随机class或者识别id
- * Prototype移除.click()
+ * ~~Prototype移除.click()~~(`.dispatchEvent()`解决)
  * ~~别想了 德高一尺 魔高一丈 永远会有脚本的~~
